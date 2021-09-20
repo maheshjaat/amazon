@@ -3,6 +3,10 @@ import AD from "./images/amad.png"
 import {useStateValue} from "./StateProvider"
 import './Checkout.css'
 import CheckoutProduct from './CheckoutProduct'
+import Subtotal from './Subtotal'
+import CurrencyFormat from 'react-currency-format'
+
+
 
 function Checkout() {
 
@@ -10,7 +14,8 @@ function Checkout() {
 
     return (
         <div className="checkout">
-            <img className="checkout__ad" src={AD} alt="" />
+           <div className="checkout__left">
+           <img className="checkout__ad" src={AD} alt="" />
             {basket?.length ===0 ? (
                 <div>
                     <h2>Your Shopping Basket is empty</h2>
@@ -34,8 +39,18 @@ function Checkout() {
                     
                 </div>
             )}
+           </div>
+           {basket.length> 0 &&(
+               <div className="checkout__right">
+                   {/* <h1>subtotal</h1> */}
+                   <Subtotal />
+               </div>
+           )}
         </div>
     )
 }
 
 export default Checkout
+
+
+//react-currency-format install
